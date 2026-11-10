@@ -1,5 +1,6 @@
 package com.cadeaencomenda.app.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,21 +28,26 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.cadeaencomenda.app.BuildConfig
 import com.cadeaencomenda.app.ui.theme.CadeAEncomendaTheme
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+
+private const val TAG = "AdBannerView"
+private const val TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111"
 
 /**
  * Composable hosting an adaptive Google Mobile Ads [AdView].
  * Automatically configures adaptive banner sizing based on screen width,
- * binds to the lifecycle for pause/resume/destroy, and provides a preview placeholder.
+ * binds to the lifecycle for pause/resume/destroy, and handles fallback to test ads
+ * while new AdMob accounts are propagating.
  */
 @Composable
 fun AdBannerView(
     modifier: Modifier = Modifier,
     adUnitId: String = BuildConfig.ADMOB_BANNER_ID
 ) {
-    // If previewing inside Android Studio, render a placeholder
     if (LocalInspectionMode.current) {
         AdBannerPlaceholder(modifier = modifier)
         return
@@ -54,7 +60,6 @@ fun AdBannerView(
 
     var adViewInstance by remember { mutableStateOf<AdView?>(null) }
 
-    // Observe lifecycle events to pause/resume/destroy AdView
     DisposableEffect(lifecycleOwner, adViewInstance) {
         val adView = adViewInstance ?: return@DisposableEffect onDispose {}
 
@@ -85,15 +90,35 @@ fun AdBannerView(
             modifier = Modifier.fillMaxWidth(),
             factory = { ctx ->
                 AdView(ctx).apply {
-                    setAdUnitId(adUnitId)
-
                     val adaptiveSize = try {
                         AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(ctx, screenWidthDp)
                     } catch (_: Exception) {
                         AdSize.BANNER
                     }
-
                     setAdSize(adaptiveSize)
+                    setAdUnitId(adUnitId)
+
+                    adListener = object : AdListener() {
+                        override fun onAdLoaded() {
+                            Log.d(TAG, "AdMob banner loaded successfully with unit: $adUnitId")
+                        }
+
+                        override fun onAdFailedToLoad(error: LoadAdError) {
+                            Log.w(TAG, "Banner failed to load ($adUnitId): ${error.message}. Code: ${error.code}")
+                            // If production unit has no fill (new account/unit propagation), retry with test unit
+                            if (adUnitId != TEST_BANNER_ID) {
+                                post {
+                                    try {
+                                        setAdUnitId(TEST_BANNER_ID)
+                                        loadAd(AdRequest.Builder().build())
+                                    } catch (e: Exception) {
+                                        Log.e(TAG, "Fallback banner load failed", e)
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     loadAd(AdRequest.Builder().build())
                     adViewInstance = this
                 }
@@ -102,9 +127,6 @@ fun AdBannerView(
     }
 }
 
-/**
- * Clean fallback placeholder shown during Compose Previews or when Ads are not initialized.
- */
 @Composable
 fun AdBannerPlaceholder(modifier: Modifier = Modifier) {
     Box(

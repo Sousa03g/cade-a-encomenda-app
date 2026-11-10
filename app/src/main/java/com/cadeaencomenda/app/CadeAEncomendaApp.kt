@@ -37,6 +37,7 @@ class CadeAEncomendaApp : Application(), Configuration.Provider {
     private fun initializeAdMob() {
         MobileAds.initialize(this) { initializationStatus ->
             Log.d(TAG, "AdMob initialized: ${initializationStatus.adapterStatusMap}")
+            com.cadeaencomenda.app.ui.components.InterstitialAdManager.loadAd(this)
         }
     }
 

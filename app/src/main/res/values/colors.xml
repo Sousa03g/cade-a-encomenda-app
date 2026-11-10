@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary -->
+    <color name="primary">#FF1565C0</color>
+    <color name="primary_light">#FF1E88E5</color>
+    <color name="primary_dark">#FF0D47A1</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="primary_container">#FFD1E4FF</color>
+    <color name="on_primary_container">#FF001D36</color>
+
+    <!-- Secondary -->
+    <color name="secondary">#FFFF8F00</color>
+    <color name="secondary_light">#FFFFA000</color>
+    <color name="secondary_dark">#FFFF6F00</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="secondary_container">#FFFFDEAE</color>
+    <color name="on_secondary_container">#FF2A1800</color>
+
+    <!-- Background / Surface -->
+    <color name="background">#FFFAFAFA</color>
+    <color name="on_background">#FF1C1B1F</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="on_surface">#FF1C1B1F</color>
+
+    <!-- Error -->
+    <color name="error">#FFB3261E</color>
+    <color name="on_error">#FFFFFFFF</color>
+
+    <!-- Status Colors -->
+    <color name="status_in_transit">#FF2196F3</color>
+    <color name="status_delivered">#FF4CAF50</color>
+    <color name="status_problem">#FFF44336</color>
+    <color name="status_pending">#FF9E9E9E</color>
+    <color name="status_out_for_delivery">#FFFF9800</color>
+    <color name="status_posted">#FF3F51B5</color>
+    <color name="status_returned">#FF795548</color>
+</resources>

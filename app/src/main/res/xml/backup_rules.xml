@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="sharedpref" path="." />
+    <include domain="database" path="." />
+    <exclude domain="sharedpref" path="device.xml" />
+    <exclude domain="database" path="com.google.android.datatransport.events" />
+    <exclude domain="database" path="com.google.android.datatransport.events-journal" />
+    <exclude domain="external" path="." />
+    <exclude domain="root" path="cache" />
+</full-backup-content>

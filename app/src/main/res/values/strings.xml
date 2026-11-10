@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Cadê a Encomenda</string>
+
+    <!-- Navigation -->
+    <string name="nav_my_packages">Minhas Encomendas</string>
+    <string name="nav_details">Detalhes</string>
+    <string name="nav_settings">Configurações</string>
+
+    <!-- Tracking -->
+    <string name="add_package">Adicionar encomenda</string>
+    <string name="tracking_code">Código de rastreio</string>
+    <string name="nickname_optional">Apelido (opcional)</string>
+    <string name="track">Rastrear</string>
+    <string name="no_packages_yet">Nenhuma encomenda ainda</string>
+    <string name="add_first_package">Adicione sua primeira encomenda</string>
+
+    <!-- Status -->
+    <string name="status_in_transit">Em trânsito</string>
+    <string name="status_delivered">Entregue</string>
+    <string name="status_problem">Problema na entrega</string>
+    <string name="status_out_for_delivery">Saiu para entrega</string>
+    <string name="status_posted">Postado</string>
+    <string name="status_pending">Aguardando</string>
+    <string name="status_returned">Devolvido</string>
+    <string name="status_exception">Problema</string>
+    <string name="status_unknown">Desconhecido</string>
+
+    <!-- Actions -->
+    <string name="action_archive">Arquivar</string>
+    <string name="action_delete">Excluir</string>
+    <string name="action_refresh">Atualizar</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="action_copy_code">Copiar código</string>
+
+    <!-- Settings -->
+    <string name="settings">Configurações</string>
+    <string name="notifications">Notificações</string>
+    <string name="theme">Tema</string>
+    <string name="theme_light">Tema claro</string>
+    <string name="theme_dark">Tema escuro</string>
+    <string name="theme_system">Seguir sistema</string>
+    <string name="update_interval">Intervalo de atualização</string>
+    <string name="about">Sobre</string>
+    <string name="version">Versão</string>
+    <string name="privacy_policy">Política de privacidade</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Rastreie tudo em um só lugar</string>
+    <string name="onboarding_description_1">Acompanhe todas as suas encomendas em um único aplicativo, de forma simples e organizada.</string>
+    <string name="onboarding_title_2">Notificações em tempo real</string>
+    <string name="onboarding_description_2">Receba alertas instantâneos sempre que o status da sua encomenda for atualizado.</string>
+    <string name="onboarding_title_3">Todas as transportadoras</string>
+    <string name="onboarding_description_3">Suporte para Correios, Jadlog, Sequoia e diversas outras transportadoras do Brasil.</string>
+
+    <!-- Errors -->
+    <string name="error_loading">Erro ao carregar</string>
+    <string name="error_no_connection">Sem conexão</string>
+    <string name="error_invalid_code">Código inválido</string>
+    <string name="error_package_not_found">Encomenda não encontrada</string>
+
+    <!-- Ads -->
+    <string name="remove_ads">Remover anúncios</string>
+    <string name="watch_video_benefit">Assistir vídeo para benefício</string>
+
+    <!-- Misc -->
+    <string name="last_update">Última atualização</string>
+    <string name="carrier">Transportadora</string>
+    <string name="confirm_delete">Confirmar exclusão</string>
+    <string name="confirm_delete_message">Tem certeza que deseja excluir esta encomenda?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">OK</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="skip">Pular</string>
+    <string name="next">Próximo</string>
+    <string name="get_started">Começar</string>
+</resources>

@@ -39,13 +39,17 @@ class SettingsViewModel @Inject constructor(
     val userMessage: SharedFlow<String> = _userMessage.asSharedFlow()
 
     val uiState: StateFlow<SettingsUiState> = combine(
-        preferencesManager.themeMode,
-        preferencesManager.notificationsEnabled,
-        preferencesManager.updateInterval,
+        combine(
+            preferencesManager.themeMode,
+            preferencesManager.notificationsEnabled,
+            preferencesManager.updateInterval
+        ) { theme, notifications, interval ->
+            Triple(theme, notifications, interval)
+        },
         trackingRepository.getActivePackages(),
         trackingRepository.getArchivedPackages(),
         _isClearingArchived
-    ) { theme, notifications, interval, activeList, archivedList, isClearing ->
+    ) { (theme, notifications, interval), activeList, archivedList, isClearing ->
         SettingsUiState(
             themeMode = theme,
             notificationsEnabled = notifications,

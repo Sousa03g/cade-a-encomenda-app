@@ -123,6 +123,7 @@ dependencies {
     implementation(libs.google.ump)
 
     // UI
+    implementation(libs.google.material)
     implementation(libs.lottie.compose)
     implementation(libs.coil.compose)
 

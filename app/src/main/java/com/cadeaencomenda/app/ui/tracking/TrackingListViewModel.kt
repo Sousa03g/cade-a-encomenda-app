@@ -86,7 +86,7 @@ class TrackingListViewModel @Inject constructor(
     fun addPackage(code: String, nickname: String) {
         viewModelScope.launch {
             try {
-                addPackageUseCase(code = code.trim().uppercase(), nickname = nickname.trim())
+                addPackageUseCase(trackingCode = code.trim().uppercase(), nickname = nickname.trim().ifBlank { null })
                 _showAddSheet.value = false
                 _packageAddedEvent.value = true
             } catch (e: Exception) {
